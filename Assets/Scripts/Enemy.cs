@@ -7,12 +7,17 @@ namespace Game
     {
         public event Action<Enemy> Died;
 
-        public bool IsAlive => _health > 0;
+        public bool IsAlive => _isAlive;
+        public int DamageToTower => _damageToTower;
 
+        [SerializeField, Min(0)]
+        private int _damageToTower = 1;
         [SerializeField, Min(0)]
         private float _maxHealth = 100;
         [SerializeField, Min(0)]
         private float _health = 100;
+
+        private bool _isAlive = true;
 
         public void Damage(float damage)
         {
@@ -37,10 +42,20 @@ namespace Game
                 OnDied();
         }
 
+        private void OnDestroy()
+        {
+            if(_isAlive)
+                OnDied();
+        }
+
         private void OnDied()
         {
+            if(_isAlive == false)
+                return;
+
+            _isAlive = false;
             Died?.Invoke(this);
-            Died = null;
+
 #if UNITY_EDITOR
             if(Application.isPlaying)
                 GameObject.Destroy(gameObject);
