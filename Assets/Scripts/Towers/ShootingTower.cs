@@ -26,7 +26,7 @@ namespace Game.Towers
 
         private void ChooseTarget()
         {
-            _currentTarget = _enemies.Count > 0 ? _enemies.Single() : null;
+            _currentTarget = _enemies.Count > 0 ? _enemies.First() : null;
         }
 
         private void Awake()
