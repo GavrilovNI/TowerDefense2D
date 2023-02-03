@@ -6,7 +6,7 @@ namespace Game
 {
     public class PathFollower : MonoBehaviour
     {
-        public event Action Finished;
+        public event Action<PathFollower> Finished;
 
         public enum FollowState
         {
@@ -102,7 +102,7 @@ namespace Game
             if(finished)
             {
                 State = FollowState.Finished;
-                Finished?.Invoke();
+                Finished?.Invoke(this);
             }
         }
 
