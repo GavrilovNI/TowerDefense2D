@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.Extensions;
 using System.Linq;
 
-namespace Game.Towers
+namespace Game.Turrets
 {
-    public sealed class ShootingTower : Tower
+    public sealed class ShootingTurret : Turret
     {
         [SerializeField]
         private HomingBullet _bullet;
@@ -12,7 +12,6 @@ namespace Game.Towers
         private UnityTimer _shootingTimer = new(1f, true);
 
         private Enemy _currentTarget = null;
-
 
         private void Shoot()
         {

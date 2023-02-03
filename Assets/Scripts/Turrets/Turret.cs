@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Towers
+namespace Game.Turrets
 {
-    public abstract class Tower : MonoBehaviour
+    public abstract class Turret : MonoBehaviour
     {
         protected readonly HashSet<Enemy> _enemies = new();
 
