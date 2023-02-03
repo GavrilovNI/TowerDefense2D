@@ -22,7 +22,12 @@ namespace Game
             bool hasTarget = _target.IsNotNull();
 
             if (hasTarget)
-                transform.up = (_target.position - transform.position).normalized;
+            {
+                Vector3 directionToTarget = _target.position - transform.position;
+                directionToTarget.z = 0;
+                directionToTarget.Normalize();
+                transform.up = directionToTarget;
+            }
 
             transform.position += transform.up * Time.fixedDeltaTime * _speed;
         }
