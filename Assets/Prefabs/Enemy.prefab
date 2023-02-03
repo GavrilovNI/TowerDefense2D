@@ -191,6 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4a1b35137d89a4da2faf9fc963638e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageToTower: 100
+  _damageToTower: 1
   _maxHealth: 100
   _health: 100
