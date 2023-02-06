@@ -10,8 +10,10 @@ namespace Game.Editing
     {
         [SerializeField]
         private bool _editing;
+#pragma warning disable 0414 // warning CS0414: The field '' is assigned but its value is never used
         [SerializeField, HideInInspector]
         private bool _showPoints = true; // using In PathEditingEditor
+#pragma warning restore 0414
 
         [SerializeField]
         private float _lineColliderWidthInPixels = 5f;
