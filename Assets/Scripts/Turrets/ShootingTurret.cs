@@ -11,6 +11,7 @@ namespace Game.Turrets
         [SerializeField]
         private UnityTimer _shootingTimer = new(1f, true);
 
+        private bool _canShoot = false;
 
         protected virtual void Awake()
         {
@@ -20,7 +21,8 @@ namespace Game.Turrets
         protected override void Update()
         {
             base.Update();
-            _shootingTimer.Tick();
+            if(_canShoot == false)
+                _shootingTimer.Tick();
         }
 
         protected virtual void OnDestroy()
@@ -36,17 +38,20 @@ namespace Game.Turrets
 
         protected override void OnTargetUpdated(Enemy oldTarget, Enemy newTarget)
         {
-            if(newTarget.IsNotNull())
+            if(newTarget.IsNotNull() && _canShoot)
                 ShootAtInner(newTarget);
         }
 
         private void ShootAtInner(Enemy enemy)
         {
             ShootAt(enemy);
+            _canShoot = false;
         }
 
         private void OnShootingTimerFired()
         {
+            _canShoot = true;
+
             bool hasTarget = CurrentTarget.IsNotNull();
             if(hasTarget)
                 ShootAtInner(CurrentTarget);
