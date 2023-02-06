@@ -4,44 +4,52 @@ using System.Linq;
 
 namespace Game.Turrets
 {
-    public sealed class ShootingTurret : Turret
+    public class ShootingTurret : SingleTargetTurret
     {
         [SerializeField]
         private HomingBullet _bullet;
         [SerializeField]
         private UnityTimer _shootingTimer = new(1f, true);
 
-        private Enemy _currentTarget = null;
 
-        private void Shoot()
+        protected virtual void Awake()
         {
-            bool hasTarget = _currentTarget.IsNotNull();
-            if (hasTarget)
-            {
-                var bullet = GameObject.Instantiate(_bullet, transform.position, transform.rotation);
-                bullet.SetTarget(_currentTarget.transform);
-            }
+            _shootingTimer.Fired += OnShootingTimerFired;
         }
 
-        private void ChooseTarget()
+        protected override void Update()
         {
-            _currentTarget = _enemies.Count > 0 ? _enemies.First() : null;
+            base.Update();
+            _shootingTimer.Tick();
         }
 
-        private void Awake()
+        protected virtual void OnDestroy()
         {
-            _shootingTimer.Fired += Shoot;
+            _shootingTimer.Fired -= OnShootingTimerFired;
         }
 
-        private void FixedUpdate()
+        protected virtual void ShootAt(Enemy enemy)
         {
-            ChooseTarget();
-            _shootingTimer.TickFixed();
+            var bullet = GameObject.Instantiate(_bullet, transform.position, transform.rotation);
+            bullet.SetTarget(CurrentTarget.transform);
         }
 
-        private void OnDestroy()
+        protected override void OnTargetUpdated(Enemy oldTarget, Enemy newTarget)
         {
-            _shootingTimer.Fired -= Shoot;
+            if(newTarget.IsNotNull())
+                ShootAtInner(newTarget);
+        }
+
+        private void ShootAtInner(Enemy enemy)
+        {
+            ShootAt(enemy);
+        }
+
+        private void OnShootingTimerFired()
+        {
+            bool hasTarget = CurrentTarget.IsNotNull();
+            if(hasTarget)
+                ShootAtInner(CurrentTarget);
         }
     }
 }
