@@ -30,7 +30,7 @@ namespace Game.Turrets.Weapons
                 transform.up = directionToTarget;
             }
 
-            transform.position += transform.up * Time.fixedDeltaTime * _speed;
+            transform.position += _speed * Time.fixedDeltaTime * transform.up;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
