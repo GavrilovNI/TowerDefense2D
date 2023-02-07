@@ -19,7 +19,9 @@ namespace Game.Turrets.Weapons
         {
             _target = target;
 
-            if(_target.IsNotNull())
+            if(_target.IsNull())
+                _target = null;
+            else
                 _targetDamageable = _target.GetComponent<IDamageable>();
 
             OnTargetUpdated();
