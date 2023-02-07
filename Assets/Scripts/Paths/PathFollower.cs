@@ -1,8 +1,12 @@
-﻿using System;
-using UnityEditor;
+﻿using Game.Core;
+using System;
 using UnityEngine;
 
-namespace Game
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+namespace Game.Paths
 {
     public class PathFollower : MonoBehaviour
     {

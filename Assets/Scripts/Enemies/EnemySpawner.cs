@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Game.Paths;
+using System;
 using UnityEngine;
 
-namespace Game
+namespace Game.Enemies
 {
     public class EnemySpawner : MonoBehaviour
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace  Game
+namespace Game.Core
 {
     public interface IDamageable
     {

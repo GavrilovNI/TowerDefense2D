@@ -1,7 +1,8 @@
+using Game.Core;
+using Game.Extensions.Unity;
 using UnityEngine;
-using UnityEngine.Extensions;
 
-namespace Game
+namespace Game.Turrets.Weapons
 {
     public class Laser : MonoBehaviour
     {

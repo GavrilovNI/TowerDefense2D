@@ -1,4 +1,4 @@
-using UnityEditor;
+using Game.Paths;
 using UnityEngine;
 
 namespace Game.Editing

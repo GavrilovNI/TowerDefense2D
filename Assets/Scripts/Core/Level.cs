@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Game.Enemies;
+using Game.Paths;
+using Game.Waves;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Game
+namespace Game.Core
 {
     public class Level : MonoBehaviour
     {

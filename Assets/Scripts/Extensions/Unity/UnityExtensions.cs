@@ -1,5 +1,6 @@
-﻿
-namespace UnityEngine.Extensions
+﻿using UnityEngine;
+
+namespace Game.Extensions.Unity
 {
     public static class UnityExtensions
     {

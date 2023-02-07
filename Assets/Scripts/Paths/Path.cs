@@ -1,10 +1,11 @@
+using Game.Core;
 using Game.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Paths
 {
     public class Path : MonoBehaviour, IEnumerable<Vector3>
     {

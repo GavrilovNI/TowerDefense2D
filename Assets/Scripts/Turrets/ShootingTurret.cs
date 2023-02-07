@@ -1,6 +1,8 @@
+using Game.Core;
+using Game.Enemies;
+using Game.Extensions.Unity;
+using Game.Turrets.Weapons;
 using UnityEngine;
-using UnityEngine.Extensions;
-using System.Linq;
 
 namespace Game.Turrets
 {

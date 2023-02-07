@@ -1,7 +1,8 @@
+using Game.Core;
 using System;
 using UnityEngine;
 
-namespace Game
+namespace Game.Enemies
 {
     public class Enemy : MonoBehaviour, IDamageable
     {

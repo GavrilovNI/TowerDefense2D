@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Game.Enemies;
+using System.Collections;
 
 namespace Game.Waves
 {

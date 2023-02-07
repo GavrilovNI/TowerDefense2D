@@ -1,9 +1,9 @@
-﻿using Game.Waves;
+﻿using Game.Enemies;
 using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Game
+namespace Game.Waves
 {
     public class WaveSpawner : MonoBehaviour
     {

@@ -1,7 +1,6 @@
-﻿using UnityEditor;
+﻿using Game.Enemies;
+using UnityEditor;
 using UnityEngine;
-
-
 
 namespace Game.Editors
 {
