@@ -1,10 +1,12 @@
 using Game.Core;
+using Game.Enemies;
+using Game.EnemyEffects;
 using Game.Extensions.Unity;
 using UnityEngine;
 
 namespace Game.Turrets.Weapons
 {
-    public class HomingBullet : MonoBehaviour
+    public class HomingBullet : WeaponWithEffects<IEnemyEffect>
     {
         [SerializeField, Min(0)]
         private float _speed = 1f;
@@ -43,6 +45,10 @@ namespace Game.Turrets.Weapons
             IDamageable damageable = target.GetComponent<IDamageable>();
             if(damageable != null)
                 damageable.Damage(_damage);
+
+            Enemy enemy = target.GetComponent<Enemy>();
+            if(enemy != null)
+                ApplyEffects(enemy);
 
             GameObject.Destroy(gameObject);
         }

@@ -1,10 +1,13 @@
 using Game.Core;
+using Game.Enemies;
+using Game.EnemyEffects;
 using Game.Extensions.Unity;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Turrets.Weapons
 {
-    public class Laser : MonoBehaviour
+    public class Laser : WeaponWithEffects<ContinuousEnemyEffect>
     {
         [SerializeField]
         private Transform _beam;
@@ -14,22 +17,54 @@ namespace Game.Turrets.Weapons
         private Transform? _target;
 
         private IDamageable _targetDamageable;
+        private Enemy _targetEnemy;
+
+        private readonly List<Coroutine> _appliedEffectCoroutines = new();
 
         public void SetTarget(Transform? target)
         {
             if(System.Object.ReferenceEquals(_target, target))
                 return;
 
+            OnUpdatingTarget();
+
             _target = target;
 
             if(_target.IsNull())
+            {
                 _target = null;
+            }
             else
+            {
                 _targetDamageable = _target.GetComponent<IDamageable>();
+                _targetEnemy = _target.GetComponent<Enemy>();
+            }
 
             OnTargetUpdated();
         }
 
+        protected override void ApplyEffects(Enemy target)
+        {
+            foreach(var effect in Effects)
+            {
+                effect.ApplyPermantly(target, out Coroutine effectCoroutine);
+                _appliedEffectCoroutines.Add(effectCoroutine);
+            }
+        }
+
+        protected virtual void StopAllEffects(Enemy enemy)
+        {
+            foreach(var effectCoroutine in _appliedEffectCoroutines)
+                enemy.StopCoroutine(effectCoroutine);
+
+            _appliedEffectCoroutines.Clear();
+        }
+
+        private void OnUpdatingTarget()
+        {
+            if(_targetEnemy.IsNotNull())
+                StopAllEffects(_targetEnemy);
+        }
 
         private void OnTargetUpdated()
         {
@@ -41,6 +76,9 @@ namespace Game.Turrets.Weapons
             {
                 UpdateTransformTowardsTarget();
                 EnableBeam();
+
+                if(_targetEnemy.IsNotNull())
+                    ApplyEffects(_targetEnemy);
             }
         }
 
