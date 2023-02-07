@@ -118,15 +118,16 @@ namespace Game.Editors
         {
             UpdateTarget();
 
-            Event guiEvent = Event.current;
-            if(guiEvent.type == EventType.Layout)
-                HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
-
             if(_path.Count == 0)
                 return;
 
+            Event guiEvent = Event.current;
+
             if(Editing)
             {
+                if(guiEvent.type == EventType.Layout)
+                    HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+
                 _coveredHandleIndex = FindCoveringHandleIndex();
                 if(_coveredHandleIndex == -1)
                     TryFindClosestPointOnPathToMouse(_pathEditing.LineColliderWidthInPixels, out _coveredLineIndex, out _pointOnCoveredLine);
