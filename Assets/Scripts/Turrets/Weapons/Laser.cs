@@ -17,6 +17,9 @@ namespace Game.Turrets.Weapons
 
         public void SetTarget(Transform? target)
         {
+            if(System.Object.ReferenceEquals(_target, target))
+                return;
+
             _target = target;
 
             if(_target.IsNull())
