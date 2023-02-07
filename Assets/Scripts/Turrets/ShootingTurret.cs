@@ -9,7 +9,7 @@ namespace Game.Turrets
     public class ShootingTurret : SingleTargetTurret
     {
         [SerializeField]
-        private HomingBullet _bullet;
+        private HomingBullet _bulletPrefab;
         [SerializeField]
         private UnityTimer _shootingTimer = new(1f, true);
 
@@ -34,7 +34,7 @@ namespace Game.Turrets
 
         protected virtual void ShootAt(Enemy enemy)
         {
-            var bullet = GameObject.Instantiate(_bullet, transform.position, transform.rotation);
+            var bullet = GameObject.Instantiate(_bulletPrefab, transform.position, transform.rotation);
             bullet.SetTarget(CurrentTarget.transform);
         }
 
