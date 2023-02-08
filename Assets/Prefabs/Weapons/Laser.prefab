@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0355cb43ccd688d48ad6c696dc9cba73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Effects: []
   _beam: {fileID: 2013270920792393392}
-  _damagePerSecond: 1
+  _damagePerSecond: 30
   _target: {fileID: 0}
 --- !u!1 &2013270920792393395
 GameObject:

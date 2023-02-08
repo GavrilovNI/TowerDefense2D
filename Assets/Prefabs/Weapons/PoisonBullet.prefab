@@ -173,18 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effects:
-  - rid: 8982523095438852099
+  - {fileID: 11400000, guid: 8dd7c6e99fa242e44b3db2843895a41e, type: 2}
   _speed: 2
   _damage: 0
   _target: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: 8982523095438852099
-      type: {class: DamageOverTimeEffect, ns: Game.EnemyEffects, asm: Assembly-CSharp}
-      data:
-        _durationInSeconds: 4
-        _damagePerSecond: 10
 --- !u!114 &8902568438439301060
 MonoBehaviour:
   m_ObjectHideFlags: 0

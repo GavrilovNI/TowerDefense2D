@@ -176,9 +176,6 @@ MonoBehaviour:
   _speed: 2
   _damage: 30
   _target: {fileID: 0}
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &8902568438439301060
 MonoBehaviour:
   m_ObjectHideFlags: 0
