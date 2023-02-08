@@ -1,4 +1,5 @@
-﻿using Game.Enemies;
+﻿using Game.CustomAttributes;
+using Game.Enemies;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -14,8 +15,9 @@ namespace Game.Waves
 
         [SerializeField]
         private EnemySpawner _enemySpawner;
-        [SerializeReference]
-        private IWave _wave = new SimpleWave();
+        [SerializeField]
+        [ExtendScriptableObject]
+        private Wave _wave;
 
         private Coroutine _spawnCoroutine;
 

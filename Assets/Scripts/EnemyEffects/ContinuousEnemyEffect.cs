@@ -6,9 +6,9 @@ using UnityEngine;
 namespace Game.EnemyEffects
 {
     [SerializeField]
-    public abstract class ContinuousEnemyEffect : IEnemyEffect
+    public abstract class ContinuousEnemyEffect : EnemyEffect
     {
-        public void Apply(Enemy enemy)
+        public sealed override void Apply(Enemy enemy)
         {
             Apply(enemy, out _);
         }

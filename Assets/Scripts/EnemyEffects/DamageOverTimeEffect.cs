@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.EnemyEffects
 {
-    [Serializable]
+    [CreateAssetMenu(fileName = nameof(DamageOverTimeEffect), menuName = "ScriptableObjects/EnemyEffects/" + nameof(DamageOverTimeEffect))]
     public class DamageOverTimeEffect : TemporaryEnemyEffect
     {
         [SerializeField, Min(0f)]

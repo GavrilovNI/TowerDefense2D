@@ -1,4 +1,5 @@
-﻿using Game.Enemies;
+﻿using Game.CustomAttributes;
+using Game.Enemies;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,13 +7,14 @@ using UnityEngine;
 
 namespace Game.Waves
 {
-    [Serializable]
-    public class CombinedWave : IWave
+    [CreateAssetMenu(fileName = nameof(CombinedWave), menuName = "ScriptableObjects/Wave/" + nameof(CombinedWave))]
+    public class CombinedWave : Wave
     {
-        [SerializeReference]
-        private List<IWave> _waves = new();
+        [SerializeField]
+        [ExtendScriptableObject]
+        private List<Wave> _waves = new();
 
-        public IEnumerator Spawn(EnemySpawner enemySpawner)
+        public override IEnumerator Spawn(EnemySpawner enemySpawner)
         {
             for(int i = 0; i < _waves.Count; ++i)
                 yield return _waves[i].Spawn(enemySpawner);

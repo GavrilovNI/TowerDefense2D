@@ -1,13 +1,15 @@
-﻿using Game.Enemies;
+﻿using Game.CustomAttributes;
+using Game.Enemies;
 using Game.EnemyEffects;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Turrets.Weapons
 {
-    public abstract class WeaponWithEffects<T> : MonoBehaviour, IEnemyEffectsTransmitter<T> where T : IEnemyEffect
+    public abstract class WeaponWithEffects<T> : MonoBehaviour, IEnemyEffectsTransmitter<T> where T : EnemyEffect
     {
-        [SerializeReference]
+        [SerializeField]
+        [ExtendScriptableObject]
         protected List<T> Effects = new();
 
         public void AddEffect(T effect) => Effects.Add(effect);

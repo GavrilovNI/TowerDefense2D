@@ -1,12 +1,11 @@
 ﻿using Game.Enemies;
-using System;
 using System.Collections;
 using UnityEngine;
 
 namespace Game.Waves
 {
-    [Serializable]
-    public class SimpleWave : IWave
+    [CreateAssetMenu(fileName = nameof(SimpleWave), menuName = "ScriptableObjects/Wave/" + nameof(SimpleWave))]
+    public class SimpleWave : Wave
     {
         [SerializeField]
         private Enemy _enemyPrefab;
@@ -15,7 +14,7 @@ namespace Game.Waves
         [SerializeField, Min(0.0001f)]
         private float _timeInSecondsBetweenSpawns = 1f;
 
-        public IEnumerator Spawn(EnemySpawner enemySpawner)
+        public override IEnumerator Spawn(EnemySpawner enemySpawner)
         {
             for(int i = 0; i < _count; ++i)
             {

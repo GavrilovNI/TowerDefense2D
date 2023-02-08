@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Turrets.Weapons
 {
-    public class HomingBullet : WeaponWithEffects<IEnemyEffect>
+    public class HomingBullet : WeaponWithEffects<EnemyEffect>
     {
         [SerializeField, Min(0)]
         private float _speed = 1f;
