@@ -356,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8586030939816577739, guid: aa4c862377b49214692a06732a4c09a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8586030939816577741, guid: aa4c862377b49214692a06732a4c09a9, type: 3}
       propertyPath: m_RootOrder
@@ -517,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8586030939816577739, guid: aa4c862377b49214692a06732a4c09a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8586030939816577741, guid: aa4c862377b49214692a06732a4c09a9, type: 3}
       propertyPath: m_RootOrder
@@ -803,29 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 2066936458}
-  _wave:
-    rid: 8982522996221280291
-  references:
-    version: 2
-    RefIds:
-    - rid: 8982522996221280291
-      type: {class: CombinedWave, ns: Game.Waves, asm: Assembly-CSharp}
-      data:
-        _waves:
-        - rid: 8982522996221280293
-        - rid: 8982522996221280294
-    - rid: 8982522996221280293
-      type: {class: SimpleWave, ns: Game.Waves, asm: Assembly-CSharp}
-      data:
-        _enemyPrefab: {fileID: 7015676391052066368, guid: 3b4c8bb7e1f08cc49a9099b8e96712a4, type: 3}
-        _count: 2
-        _timeInSecondsBetweenSpawns: 1
-    - rid: 8982522996221280294
-      type: {class: SimpleWave, ns: Game.Waves, asm: Assembly-CSharp}
-      data:
-        _enemyPrefab: {fileID: 7015676391052066368, guid: 3b4c8bb7e1f08cc49a9099b8e96712a4, type: 3}
-        _count: 4
-        _timeInSecondsBetweenSpawns: 0.5
+  _wave: {fileID: 11400000, guid: dbe9dff6042a22c4caa00b81405d365f, type: 2}
 --- !u!4 &2910924193193669421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7274217011261882144, guid: c0f5f66d726811b4d9010af59a381a2c, type: 3}
