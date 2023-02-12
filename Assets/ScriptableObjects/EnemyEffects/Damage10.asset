@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3833be70d435394ab84442ad70e7cb6, type: 3}
-  m_Name: TestDamageOverTimeEffect
+  m_Script: {fileID: 11500000, guid: 404796b8d59a1994aab92337e36331f6, type: 3}
+  m_Name: Damage10
   m_EditorClassIdentifier: 
-  _durationInSeconds: 4
-  _damagePerSecond: 10
+  _damage: 10
