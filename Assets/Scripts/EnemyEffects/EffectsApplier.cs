@@ -1,5 +1,6 @@
 ﻿using Game.Enemies;
 using Game.EnemyEffects.Effects.Abstract;
+using Game.Extensions.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -68,9 +69,13 @@ namespace Game.EnemyEffects
 
         protected void CancelEffect(Coroutine effectCoroutine)
         {
-            Enemy.StopCoroutine(effectCoroutine);
-            var effect = _runningEffects[effectCoroutine];
-            effect.OnCancelled(Enemy);
+            if(Enemy.IsNotNull())
+            {
+                Enemy.StopCoroutine(effectCoroutine);
+                var effect = _runningEffects[effectCoroutine];
+                effect.OnCancelled(Enemy);
+            }
+
             _runningEffects.Remove(effectCoroutine);
         }
 
