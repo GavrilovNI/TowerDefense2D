@@ -23,6 +23,16 @@ namespace Game.Paths
         public FollowState State { get; private set; } = FollowState.NotStarted;
         public Path Path => _path;
         public Vector3 CurrentTarget => _currentTarget;
+        public float Speed
+        {
+            get => _speed;
+            set
+            {
+                if(value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                _speed = value;
+            }
+        }
 
         [SerializeField, Min(0)]
         private float _speed = 1f;
