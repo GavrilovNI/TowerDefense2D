@@ -13,6 +13,7 @@ namespace Game.Turrets.Weapons
         protected List<T> Effects = new();
 
         public void AddEffect(T effect) => Effects.Add(effect);
+        public void AddEffects(IEnumerable<T> effects) => Effects.AddRange(effects);
 
         protected virtual void ApplyEffects(Enemy target)
         {
