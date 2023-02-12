@@ -7,11 +7,11 @@ namespace Game.Turrets
     public class LaserTurret : SingleTargetTurret
     {
         [SerializeField]
-        private Laser _laser;
+        private TargettedEffectTransmitter _laser;
 
-        protected override void OnTargetUpdated(Enemy oldTarget, Enemy newTarget)
+        protected override void OnTargetUpdated(Enemy? oldTarget, Enemy? newTarget)
         {
-            _laser.SetTarget(newTarget?.transform);
+            _laser.SetTarget(newTarget);
         }
     }
 }

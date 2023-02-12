@@ -9,7 +9,7 @@ namespace Game.Turrets
     public class ShootingTurret : SingleTargetTurret
     {
         [SerializeField]
-        private HomingBullet _bulletPrefab;
+        private TargetFollower _bulletPrefab;
         [SerializeField]
         private UnityTimer _shootingTimer = new(1f, true);
 

@@ -1,33 +1,36 @@
 ﻿using Game.Enemies;
-using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Game.EnemyEffects
+namespace Game.EnemyEffects.Effects.Abstract
 {
-    public abstract class TemporaryEnemyEffect : ContinuousEnemyEffect
+    public abstract class TickableEnemyEffect : EnemyEffect
     {
         [SerializeField, Min(0f)]
-        private float _durationInSeconds = 1f;
+        private float _durationInSeconds;
 
-        public TemporaryEnemyEffect(float durationInSeconds)
+        public TickableEnemyEffect(float durationInSeconds)
         {
             _durationInSeconds = durationInSeconds;
         }
 
-        protected sealed override IEnumerator ApplyContinuously(Enemy enemy)
+        public sealed override IEnumerator Apply(Enemy enemy)
         {
             float secondsLeft = _durationInSeconds;
+
+            if(secondsLeft == 0)
+                yield break;
 
             while(secondsLeft > 0)
             {
                 float elapsedTimeInSeconds = Mathf.Min(secondsLeft, Time.deltaTime);
                 secondsLeft -= elapsedTimeInSeconds;
-                ApplyByElapsedTime(enemy, elapsedTimeInSeconds);
+                Tick(enemy, elapsedTimeInSeconds);
                 yield return null;
             }
         }
 
-        protected abstract void ApplyByElapsedTime(Enemy enemy, float elapsedTimeInSeconds);
+        protected abstract void Tick(Enemy enemy, float elapsedTimeInSeconds);
+
     }
 }

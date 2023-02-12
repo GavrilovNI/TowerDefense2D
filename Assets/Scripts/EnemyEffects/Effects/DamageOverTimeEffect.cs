@@ -1,14 +1,14 @@
 ﻿using Game.Enemies;
-using System;
+using Game.EnemyEffects.Effects.Abstract;
 using UnityEngine;
 
-namespace Game.EnemyEffects
+namespace Game.EnemyEffects.Effects
 {
-    [CreateAssetMenu(fileName = nameof(DamageOverTimeEffect), menuName = "ScriptableObjects/EnemyEffects/" + nameof(DamageOverTimeEffect))]
-    public class DamageOverTimeEffect : TemporaryEnemyEffect
+    [CreateAssetMenu(fileName = nameof(DamageOverTimeEffect), menuName = EnemyEffect.DefaultMenuPath + nameof(DamageOverTimeEffect))]
+    public class DamageOverTimeEffect : TickableEnemyEffect
     {
         [SerializeField, Min(0f)]
-        private float _damagePerSecond = 1f;
+        private float _damagePerSecond;
 
         public DamageOverTimeEffect() : this(1, 1)
         {
@@ -20,7 +20,7 @@ namespace Game.EnemyEffects
             _damagePerSecond = damagePerSecond;
         }
 
-        protected override void ApplyByElapsedTime(Enemy enemy, float elapsedTimeInSeconds)
+        protected override void Tick(Enemy enemy, float elapsedTimeInSeconds)
         {
             float damage = _damagePerSecond * elapsedTimeInSeconds;
             enemy.Damage(damage);
