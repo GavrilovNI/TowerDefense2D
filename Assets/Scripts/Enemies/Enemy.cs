@@ -12,7 +12,7 @@ namespace Game.Enemies
         public bool IsAlive => _isAlive;
         public int DamageToTower => _damageToTower;
 
-        public readonly EffectsApplier EffectsApplier;
+        public EffectsApplier EffectsApplier;
 
         [SerializeField, Min(0)]
         private int _damageToTower = 1;
@@ -55,6 +55,8 @@ namespace Game.Enemies
         {
             if(_isAlive)
                 OnDied();
+
+            EffectsApplier = null; // free memory
         }
 
         private void OnDied()
