@@ -5,12 +5,16 @@ using UnityEngine;
 
 namespace Game.Enemies
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour, IDamageable, IHaveHealth
     {
         public event Action<Enemy> Died;
+        public event Action HealthChanged;
 
         public bool IsAlive => _isAlive;
         public int DamageToTower => _damageToTower;
+
+        public float CurrentHealth => _health;
+        public float MaxHealth => _maxHealth;
 
         public EffectsApplier EffectsApplier;
 
@@ -34,6 +38,8 @@ namespace Game.Enemies
                 throw new ArgumentOutOfRangeException(nameof(damage));
 
             _health -= damage;
+            HealthChanged?.Invoke();
+
             if(_health <= 0)
                 OnDied();
         }
@@ -41,8 +47,7 @@ namespace Game.Enemies
         [ContextMenu("Kill")]
         public void Kill()
         {
-            _health = 0;
-            OnDied();
+            Damage(_health);
         }
         
         private void Start()
