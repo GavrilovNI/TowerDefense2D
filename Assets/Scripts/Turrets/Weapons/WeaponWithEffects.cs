@@ -1,6 +1,6 @@
 ﻿using Game.CustomAttributes;
 using Game.Enemies;
-using Game.EnemyEffects;
+using Game.EnemyEffects.Effects.Abstract;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +17,9 @@ namespace Game.Turrets.Weapons
 
         protected virtual void ApplyEffects(Enemy target)
         {
+            var effectsApplier = target.EffectsApplier;
             foreach(var effect in Effects)
-                effect.Apply(target);
+                effectsApplier.AddEffect(effect);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Game.EnemyEffects
+namespace Game.EnemyEffects.Effects.Abstract
 {
     public interface IEnemyEffectsTransmitter<T> where T : EnemyEffect
     {

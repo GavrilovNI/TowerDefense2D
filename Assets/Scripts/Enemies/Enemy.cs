@@ -1,4 +1,5 @@
 using Game.Core;
+using Game.EnemyEffects;
 using System;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Game.Enemies
         public bool IsAlive => _isAlive;
         public int DamageToTower => _damageToTower;
 
+        public readonly EffectsApplier EffectsApplier;
+
         [SerializeField, Min(0)]
         private int _damageToTower = 1;
         [SerializeField, Min(0)]
@@ -19,6 +22,11 @@ namespace Game.Enemies
         private float _health = 100;
 
         private bool _isAlive = true;
+
+        public Enemy()
+        {
+            EffectsApplier = new(this);
+        }
 
         public void Damage(float damage)
         {
@@ -36,7 +44,7 @@ namespace Game.Enemies
             _health = 0;
             OnDied();
         }
-
+        
         private void Start()
         {
             if(_health <= 0)
