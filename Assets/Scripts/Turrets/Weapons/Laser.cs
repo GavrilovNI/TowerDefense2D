@@ -38,10 +38,20 @@ namespace Game.Turrets.Weapons
         {
             base.OnTargetUpdated();
 
+            UpdateBeamActivityByTarget();
+        }
+
+        protected void UpdateBeamActivityByTarget()
+        {
             if(Target == null)
                 DisableBeam();
             else
                 EnableBeam();
+        }
+
+        private void Awake()
+        {
+            UpdateBeamActivityByTarget();
         }
 
         private void Update()
