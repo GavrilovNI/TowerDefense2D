@@ -8,9 +8,17 @@ namespace Game.Core
         [SerializeField]
         private UnityEvent _destroying;
 
+        private bool _applicationQuitted = false;
+
+        private void OnApplicationQuit()
+        {
+            _applicationQuitted = true;
+        }
+
         private void OnDestroy()
         {
-            _destroying.Invoke();
+            if(_applicationQuitted == false)
+                _destroying.Invoke();
         }
     }
 }
