@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5724347728616296446}
   - component: {fileID: 5619736081146321998}
   - component: {fileID: -1053475244967065371}
+  - component: {fileID: 5154011639205296817}
   m_Layer: 7
   m_Name: RegionCreationBullet
   m_TagString: Untagged
@@ -244,5 +245,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _regionPrefab: {fileID: -1697880031144146420, guid: b94e54b78081f8d408bc5b78435aaea1, type: 3}
-  OneTimeEffects: []
+  OnEnterEffects: []
   InsideContinuousEffects: []
+--- !u!114 &5154011639205296817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357524082567892926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecf81c7cfc9f5a49949cd00035b1488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

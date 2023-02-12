@@ -1,4 +1,5 @@
-﻿using Game.Paths;
+﻿using Game.Core;
+using Game.Paths;
 using System;
 using UnityEngine;
 

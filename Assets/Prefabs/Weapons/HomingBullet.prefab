@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5224570784301960787}
   - component: {fileID: 3461754634939469696}
   - component: {fileID: -1157749708314207242}
+  - component: {fileID: 7706047758762178030}
   m_Layer: 7
   m_Name: HomingBullet
   m_TagString: Untagged
@@ -216,3 +217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effects: []
+--- !u!114 &7706047758762178030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8902568438439301056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecf81c7cfc9f5a49949cd00035b1488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

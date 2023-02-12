@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2685674081386375219}
   - component: {fileID: 2685674081386375220}
   - component: {fileID: -1697880031144146420}
+  - component: {fileID: -6733284027668228613}
   m_Layer: 0
   m_Name: RegionWithEffects
   m_TagString: Untagged
@@ -133,5 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fd90a62b1abca4dbf5bd9a88cb852a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OneTimeEffects: []
+  OnEnterEffects: []
   InsideContinuousEffects: []
+--- !u!114 &-6733284027668228613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685674081386375222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecf81c7cfc9f5a49949cd00035b1488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

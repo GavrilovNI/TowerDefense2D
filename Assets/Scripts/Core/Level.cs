@@ -47,10 +47,17 @@ namespace Game.Core
             if(_isWaveRunning == false)
                 throw new InvalidOperationException("Wave is not running");
 
+            _isWaveRunning = false;
+
             StopAllSpawners();
             KillAllEnemies();
+            NotifyLevelTimeObjectsAbountStopping();
+        }
 
-            _isWaveRunning = false;
+        private void NotifyLevelTimeObjectsAbountStopping()
+        {
+            foreach(LevelTimeObject levelTimeObject in GameObject.FindObjectsOfType<LevelTimeObject>())
+                levelTimeObject.OnLevelStopped();
         }
 
         private void Start()
