@@ -11,7 +11,7 @@ namespace Game.Enemies
         public event Action HealthChanged;
 
         public bool IsAlive => _isAlive;
-        public int DamageToTower => _damageToTower;
+        public float DamageToTower => _damageToTower;
 
         public float CurrentHealth => _health;
         public float MaxHealth => _maxHealth;
@@ -19,7 +19,7 @@ namespace Game.Enemies
         public EffectsApplier EffectsApplier;
 
         [SerializeField, Min(0)]
-        private int _damageToTower = 1;
+        private float _damageToTower = 1;
         [SerializeField, Min(0)]
         private float _maxHealth = 100;
         [SerializeField, Min(0)]

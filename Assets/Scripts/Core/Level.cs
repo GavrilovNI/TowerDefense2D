@@ -12,13 +12,14 @@ namespace Game.Core
     {
         public event Action<Level> Won;
         public event Action<Level> Lost;
+        public event Action HealthChanged;
 
         [SerializeField, Min(0)]
-        private int _maxHealth = 3;
+        private float _maxHealth = 3;
         [SerializeField]
         private List<WaveSpawner> _spawners = new();
 
-        private int _health;
+        private float _health;
 
         private readonly HashSet<Enemy> _enemies = new();
 
@@ -81,7 +82,7 @@ namespace Game.Core
                 UnsubscribeFromEnemyEvents(enemy);
         }
 
-        private void Damage(int damage)
+        private void Damage(float damage)
         {
             if(damage < 0)
                 throw new ArgumentOutOfRangeException(nameof(damage));
