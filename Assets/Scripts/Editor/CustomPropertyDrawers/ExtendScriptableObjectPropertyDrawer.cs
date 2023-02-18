@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Game.Editors.CustomAttributes
+namespace Game.Editors.CustomPropertyDrawers
 {
 	// Developed by Tom Kail at Inkle
 	// Released under the MIT Licence as held at https://opensource.org/licenses/MIT
