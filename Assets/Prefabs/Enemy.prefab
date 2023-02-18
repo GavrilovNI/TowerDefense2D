@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: _enemy
       value: 
       objectReference: {fileID: 7015676391052066368}
+    - target: {fileID: 2764794099286694325, guid: 7ec06184869c210479aafd43988b9617, type: 3}
+      propertyPath: HealthOwner
+      value: 
+      objectReference: {fileID: 7015676391052066368}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
