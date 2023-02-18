@@ -648,6 +648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowRegionShootingTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 9005238670187079285, guid: bb299f481a27e624baa7cd02a349fc1e, type: 3}
+      propertyPath: _enemySelector
+      value: 
+      objectReference: {fileID: 11400000, guid: 10b24de9b2341054f87ba8515df75346, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: _bulletPrefab
       value: 
       objectReference: {fileID: 9061753817669702508, guid: ca493fe8dda927843b7b54a9afbdebce, type: 3}
+    - target: {fileID: 23486472167305174, guid: ab1e637a6d79016449540ffd8b6118cb, type: 3}
+      propertyPath: _enemySelector
+      value: 
+      objectReference: {fileID: 11400000, guid: c70764f017a3ad346ab042cf14c7f14b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

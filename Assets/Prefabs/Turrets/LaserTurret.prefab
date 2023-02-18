@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6661691605e8b5c41a4f42646b5a2de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemySelector: {fileID: 11400000, guid: c70764f017a3ad346ab042cf14c7f14b, type: 2}
   _laser: {fileID: 7112763506837080749}
 --- !u!1001 &518891798724292845
 PrefabInstance:
