@@ -50,8 +50,8 @@ namespace Game.Core
 
             StartAllSpawners();
 
-            if(_spawners.Count == 0)
-                TryWin();
+            TryWin();
+            TryLose();
         }
 
         [ContextMenu("Stop Level")]
@@ -105,6 +105,7 @@ namespace Game.Core
             CurrentHealth -= damage;
             if(_health <= 0)
                 OnLost();
+            TryLose();
         }
 
         private void KillAllEnemies()
@@ -142,6 +143,14 @@ namespace Game.Core
             Won?.Invoke(this);
 
             Debug.Log("Won", this);
+        }
+
+        private void TryLose()
+        {
+            bool canLose = _isWaveRunning && CurrentHealth <= 0;
+
+            if(canLose)
+                OnLost();
         }
 
         private void TryWin()
