@@ -155,8 +155,8 @@ namespace Game.Core
 
         private void TryWin()
         {
-            bool isWaveFinished = _finishedSpawnersCount == _spawners.Count && _enemies.Count == 0;
-            bool canWin = _isWaveRunning && _health > 0 && isWaveFinished;
+            bool isAllEnemiesSpawnedAndDead = _finishedSpawnersCount == _spawners.Count && _enemies.Count == 0;
+            bool canWin = _isWaveRunning && CurrentHealth > 0 && isAllEnemiesSpawnedAndDead;
 
             if(canWin)
                 OnWon();
