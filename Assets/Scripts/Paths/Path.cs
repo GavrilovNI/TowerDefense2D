@@ -54,6 +54,17 @@ namespace Game.Paths
             RecalculateDistancesOfChangedPoint(index);
         }
 
+        public float GetDistanceFromStartToPoint(int index)
+        {
+            if(index < 0 || index > _points.Count)
+                throw new ArgumentOutOfRangeException(nameof(index));
+
+            float totalDistance = 0;
+            for(int i = 0; i < index - 1; ++i)
+                totalDistance += _distanceToNextPoint[i];
+            return totalDistance;
+        }
+
         public Vector3 GetClosestPosition(Vector3 fromPosition)
         {
             return Math3d.GetClosestPointOnPath(fromPosition, _points.ToArray());

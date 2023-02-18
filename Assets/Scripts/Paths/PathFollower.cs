@@ -34,6 +34,10 @@ namespace Game.Paths
             }
         }
 
+        public float PassedDistance { get; private set; }
+        public float PassedDistanceInPercent => Path.Distance < _reachDistance ? 1 : PassedDistance / Path.Distance;
+
+
         [SerializeField, Min(0)]
         private float _speed = 1f;
         [SerializeField, Min(0)]
@@ -89,6 +93,7 @@ namespace Game.Paths
 
             _path = path;
             SetCurrentTarget(0, _path[0]);
+            UpdatePassedDistance(1, _path[0]);
             State = FollowState.Following;
         }
 
@@ -101,7 +106,16 @@ namespace Game.Paths
             Vector3 closestPoint = Math3d.GetClosestPointOnPath(transform.position, path.ToArray(), out int prevPointIndex);
 
             SetCurrentTarget(prevPointIndex, closestPoint);
+            UpdatePassedDistance(prevPointIndex + 1, closestPoint);
             State = FollowState.Following;
+        }
+
+        private void UpdatePassedDistance(int nextPointIndex, Vector3 target)
+        {
+            float passedDistance = Path.GetDistanceFromStartToPoint(nextPointIndex);
+            passedDistance -= Vector3.Distance(target, Path[nextPointIndex]);
+            passedDistance -= Vector3.Distance(transform.position, target);
+            PassedDistance = passedDistance;
         }
 
         private void FixedUpdate()
@@ -165,6 +179,8 @@ namespace Game.Paths
                 float maxDistanceCanGo = MathF.Min(distanceToGo, distanceToTarget);
                 Vector3 direction = (_currentTarget - transform.position).normalized;
                 transform.position += direction * maxDistanceCanGo;
+
+                PassedDistance += maxDistanceCanGo;
 
                 float leftDistance = distanceToGo - maxDistanceCanGo;
                 if(leftDistance > 0)
