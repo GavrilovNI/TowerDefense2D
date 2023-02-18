@@ -19,6 +19,9 @@ namespace Game.Regions
         [ExtendScriptableObject]
         protected List<EnemyEffect> InsideContinuousEffects = new();
 
+        [SerializeField]
+        private Vector3 _spawnRegionOffset = Vector3.forward;
+
         private LevelTimeObject _levelTimeObject;
 
         private bool CanSpawn()
@@ -31,7 +34,7 @@ namespace Game.Regions
             if(CanSpawn() == false)
                 return;
 
-            RegionWithEffects region = GameObject.Instantiate(_regionPrefab, transform.position, transform.rotation);
+            RegionWithEffects region = GameObject.Instantiate(_regionPrefab, transform.position + _spawnRegionOffset, transform.rotation);
 
             region.AddOneTimeEffects(OnEnterEffects);
             region.AddContinuousEffects(InsideContinuousEffects);

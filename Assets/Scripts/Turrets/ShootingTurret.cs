@@ -12,6 +12,8 @@ namespace Game.Turrets
         private TargetFollower _bulletPrefab;
         [SerializeField]
         private UnityTimer _shootingTimer = new(1f, true);
+        [SerializeField]
+        private Vector3 _spawnBulletOffset = Vector3.back;
 
         private bool _canShoot = false;
 
@@ -34,7 +36,7 @@ namespace Game.Turrets
 
         protected virtual void ShootAt(Enemy enemy)
         {
-            var bullet = GameObject.Instantiate(_bulletPrefab, transform.position, transform.rotation);
+            var bullet = GameObject.Instantiate(_bulletPrefab, transform.position + _spawnBulletOffset, transform.rotation);
             bullet.SetTarget(CurrentTarget.transform);
         }
 
