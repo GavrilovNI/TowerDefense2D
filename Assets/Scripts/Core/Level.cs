@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Game.Core
 {
-    public class Level : MonoBehaviour
+    public class Level : MonoBehaviour, IHaveHealth
     {
         public event Action<Level> Won;
         public event Action<Level> Lost;
@@ -26,6 +26,18 @@ namespace Game.Core
         private int _finishedSpawnersCount = 0;
         private bool _isWaveRunning = false;
 
+        public float CurrentHealth
+        {
+            get => _health;
+            set
+            {
+                _health = value;
+                HealthChanged?.Invoke();
+            }
+        }
+
+        public float MaxHealth => _maxHealth;
+
         [ContextMenu("Start Level")]
         public void StartLevel()
         {
@@ -33,7 +45,7 @@ namespace Game.Core
                 throw new InvalidOperationException("Wave is still running");
 
             _finishedSpawnersCount = 0;
-            _health = _maxHealth;
+            CurrentHealth = MaxHealth;
             _isWaveRunning = true;
 
             StartAllSpawners();
@@ -90,7 +102,7 @@ namespace Game.Core
             if(_isWaveRunning == false)
                 throw new InvalidOperationException("Wave is not running");
 
-            _health -= damage;
+            CurrentHealth -= damage;
             if(_health <= 0)
                 OnLost();
         }
